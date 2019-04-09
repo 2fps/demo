@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket</title>
+</head>
+<body>
+    
+</body>
+<script>
+var ws = new WebSocket('ws://127.0.0.1:3000');
+
+ws.onopen = function() {
+    console.log('open');
+}
+ws.onmessage = function(data) {
+    console.log(data);
+}
+</script>
+</html>
