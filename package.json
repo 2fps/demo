@@ -1,0 +1,22 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "个人博客的demo，以及其他情况下使用到demo",
+  "scripts": {
+    "build": "node ./build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2fps/demo.git"
+  },
+  "keywords": [],
+  "author": "2fps",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2fps/demo/issues"
+  },
+  "homepage": "https://github.com/2fps/demo#readme",
+  "devDependencies": {
+    "marked": "^0.6.2"
+  }
+}

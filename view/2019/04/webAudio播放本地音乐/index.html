@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>audioplay</title>
+</head>
+<body>
+    <input type="file" id="file" accept="audio/x-wav,audio/mpeg" />
+</body>
+<script>
+var context = new (window.AudioContext || window.webkitAudioContext)();
+
+document.getElementById('file').addEventListener('change', function(e) {
+    var read = new FileReader();
+
+    read.onload = function() {
+		// 将arrayBuffer转成audioBuffer
+        context.decodeAudioData(this.result, function(buffer) {
+            playSound(buffer);
+        }, function() {
+            console.log('error');
+        });
+    };
+	// 利用filereader将file转成arraybuffer格式
+    read.readAsArrayBuffer(this.files[0]);
+});
+// 播放音频
+function playSound(buffer) {
+    var source = context.createBufferSource();
+
+    // 设置数据
+    source.buffer = buffer;
+    // connect到扬声器
+    source.connect(context.destination);
+    source.start();
+}
+</script>
+</html>

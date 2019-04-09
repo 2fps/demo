@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>createplay</title>
+</head>
+<body>
+    <button id="start">播放</button>
+</body>
+<script>
+var context = new (window.AudioContext || window.webkitAudioContext)();
+
+var oscillator = context.createOscillator();
+// oscillator.type = 'sine';
+// oscillator.frequency.value = 800;  // 频率800Hz，默认440
+
+var gainNode = context.createGain();
+gainNode.gain.value = 0.8;  // 音量  0 ~ 1
+
+oscillator.connect(gainNode);    // 关联到音量
+gainNode.connect(context.destination); // 音量关联到扬声器
+
+// chrome 73 需要用户点击才可播放
+document.getElementById('start').addEventListener('click', function() {
+    oscillator.start();
+});
+</script>
+</html>
