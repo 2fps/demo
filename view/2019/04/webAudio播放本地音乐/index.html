@@ -10,10 +10,12 @@
     <input type="file" id="file" accept="audio/x-wav,audio/mpeg" />
 </body>
 <script>
-var context = new (window.AudioContext || window.webkitAudioContext)();
+var context = null;
 
 document.getElementById('file').addEventListener('change', function(e) {
     var read = new FileReader();
+
+    context = new (window.AudioContext || window.webkitAudioContext)();
 
     read.onload = function() {
 		// 将arrayBuffer转成audioBuffer

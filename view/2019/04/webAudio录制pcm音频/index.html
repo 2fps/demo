@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>recorderplay</title>
+</head>
+<body>
+    <div>
+        getUserMedia需要https，使用localhost或127.0.0.1时，可用http。
+    </div>
+    <button id="start">开始录音</button>
+    <button id="end">结束录音</button>
+    <button id="play">播放录音</button>
+</body>
+<script>
+var context = null,
+    inputData = [],
+    size = 0,
+    audioInput = null,
+    recorder = null,
+    dataArray;
+
+document.getElementById('start').addEventListener('click', function() {
+    context = new (window.AudioContext || window.webkitAudioContext)();
+    // 录音节点
+    recorder = context.createScriptProcessor(4096, 1, 1);
+
+    recorder.onaudioprocess = function(e) {
+        var data = e.inputBuffer.getChannelData(0);
+
+        inputData.push(new Float32Array(data));
+        size += data.length;
+    }
+
+    navigator.mediaDevices.getUserMedia({
+        audio: true
+    }).then((stream) => {
+        audioInput = context.createMediaStreamSource(stream);
+
+    }).catch((err) => {
+        console.log('error');
+    }).then(function() {
+        audioInput.connect(recorder);
+        recorder.connect(context.destination);
+    });
+});
+document.getElementById('end').addEventListener('click', function() {
+    recorder.disconnect();
+});
+document.getElementById('play').addEventListener('click', function() {
+    recorder.disconnect();
+    if (0 !== size) {
+        // 组合数据
+        var data = combine(inputData, size);
+
+        console.log(data.buffer);
+    }
+});
+
+function combine(buffer, size) {
+    var data = new Float32Array(size);
+    var offset = 0; // 偏移量计算
+    // 将二维数据，转成一维数据
+    for (var i = 0; i < buffer.length; i++) {
+        data.set(buffer[i], offset);
+        offset += buffer[i].length;
+    }
+
+    return data;
+}
+</script>
+</html>
