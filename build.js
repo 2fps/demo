@@ -14,19 +14,24 @@ dealReadme(menu);
 
 
 // 获取指定目录下的文件的信息
-function getNameAndPath(filePath, menu = {}) {
+/**
+ * 
+ * @param {String} filePath 开始路径
+ * @param {Object} menu     存放转化后的数据
+ * @param {Number} cir      层级，控制检索到第几层
+ */
+function getNameAndPath(filePath, menu = {}, cir = 0) {
     let files = fs.readdirSync(filePath);
+
+    cir++;
 
     files.forEach(function(filename) {
         let filedir = path.join(filePath, filename);
 
-        let stats = fs.statSync(filedir);
-        let isFile = stats.isFile();//是文件
-        let isDir = stats.isDirectory();//是文件夹
-
-        if (isDir) {
+        if (4 > cir) {
+            // 检索层级
             menu[ filename ] = {};
-            getNameAndPath(filedir, menu[ filename ]);
+            getNameAndPath(filedir, menu[ filename ], cir);
         } else {
             menu.path = filePath.replace(/\\/g, '/');
 
@@ -53,24 +58,29 @@ function dealReadme(menu) {
     createHTML(marked(str));
 }
 
-// 将menu转成md
+// 将menu转成md，此处要按时间倒序排
 function transPath(menu) {
     let str = '';
 
-    for (var title in menu) {
+    // 年份倒序
+    Object.keys(menu).sort(function(y1, y2) {
+        return y2 - y1;
+    }).forEach(function(year) {
         str += `
-## ${title}  `;
-
-        for (var sub in menu[ title ]) {
+## ${year}  `;
+        // 月份倒序
+        Object.keys(menu[ year ]).sort(function(y1, y2) {
+            return y2 - y1;
+        }).forEach(function(month) {
             str += `
-### ${sub}  `;
+### ${month}  `;
 
-            for (var head in menu[ title ][ sub ]) {
+            for (var title in menu[ year ][ month ]) {
                 str += `
-+ [${head}](${menu[ title ][ sub ][ head ].path})，README查看：[README.md](${menu[ title ][ sub ][ head ].path + '/README.md'})  `;
++ [${title}](${menu[ year ][ month ][ title ].path + '/index.html'})，README查看：[README.md](${menu[ year ][ month ][ title ].path + '/README.md'})  `;
             }
-        }
-    }
+        });
+    });
 
     return str;
 }

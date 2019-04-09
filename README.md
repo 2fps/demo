@@ -17,5 +17,5 @@ http-server ./
 
 ## 2019  
 ### 04  
-+ [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放)，README查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
-+ [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐)，README查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
++ [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，README查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
++ [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，README查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
