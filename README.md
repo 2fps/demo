@@ -30,3 +30,6 @@ npm run build
 
 ### 02  
 + [基于node简单实现RSA加解密](view/2019/02/基于node简单实现RSA加解密)，帮助信息查看：[README.md](view/2019/02/基于node简单实现RSA加解密/README.md)  
+
+### 01  
++ [基于阿里云实现简单的语音识别功能(node)](view/2019/01/基于阿里云实现简单的语音识别功能(node))，帮助信息查看：[README.md](view/2019/01/基于阿里云实现简单的语音识别功能(node)/README.md)  
