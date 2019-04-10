@@ -11,7 +11,6 @@
     </div>
     <button id="start">开始录音</button>
     <button id="end">结束录音</button>
-    <button id="play">播放录音</button>
 </body>
 <script>
 var context = null,
@@ -46,9 +45,6 @@ document.getElementById('start').addEventListener('click', function() {
     });
 });
 document.getElementById('end').addEventListener('click', function() {
-    recorder.disconnect();
-});
-document.getElementById('play').addEventListener('click', function() {
     recorder.disconnect();
     if (0 !== size) {
         // 组合数据

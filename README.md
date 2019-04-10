@@ -3,24 +3,25 @@
 
 ## 使用方法
 
+### 启动服务，查看demo
+
+根目录下启动  
+```
+http-server ./  
+```
+为啥带 ./ ，我也不知道为啥根目录下启动http-server，他会默认到./public目录下，估带./当前目录。
+访问对应端口即可查看demo。  
+
 ### 重新编译
 ```
 npm run build
 ```
 
-### 启动服务，查看demo
-
-根目录下启动  
-http-server ./  
-
-访问对应端口即可查看demo。  
-
-
 ## 2019  
 
 ### 04  
 + [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
-+ [webAudio录制pcm音频](view/2019/04/webAudio录制pcm音频/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio录制pcm音频/README.md)  
++ [webAudio实现获取音频模拟信号数据](view/2019/04/webAudio实现获取音频模拟信号数据/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio实现获取音频模拟信号数据/README.md)  
 + [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
 
 ### 03  
