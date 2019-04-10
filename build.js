@@ -25,19 +25,27 @@ function getNameAndPath(filePath, menu = {}, cir = 0) {
 
     cir++;
 
-    files.forEach(function(filename) {
-        let filedir = path.join(filePath, filename);
+    for (let i = 0; i < files.length; ++i) {
+        let filename = files[ i ],
+            filedir = path.join(filePath, filename);
 
+        // 控制遍历层级
         if (4 > cir) {
-            // 检索层级
+            // 这儿都是文件夹，仍需要遍历
             menu[ filename ] = {};
             getNameAndPath(filedir, menu[ filename ], cir);
         } else {
-            menu.path = filePath.replace(/\\/g, '/');
+            // 一般内部有package.json的都需要独自启动服务器，所以，这种时候，不直接链接到他的index.html
+            let needServer = fs.existsSync(filePath + '/package.json');
 
-            return;
+            // 替换 window 下的斜杠
+            menu.path = filePath.replace(/\\/g, '/');
+            menu.needServer = needServer;
+
+            // 提前退出，没必要遍历
+            break;
         }
-    });
+    }
 }
 
 // 修改 readme
@@ -48,7 +56,7 @@ function dealReadme(menu) {
     if (fs.existsSync(curPath)) {
         fs.unlinkSync(curPath)
     }
-    // 先获取readme头部信息
+    // 先获取通用readme头部信息
     str = fs.readFileSync('public/title.md');
     // 增加内容
     str += transPath(menu);
@@ -70,16 +78,19 @@ function transPath(menu) {
 
 ## ${year}  `;
         // 月份倒序
-        Object.keys(menu[ year ]).sort(function(y1, y2) {
-            return y2 - y1;
+        Object.keys(menu[ year ]).sort(function(m1, m2) {
+            return m2 - m1;
         }).forEach(function(month) {
             str += `
 
 ### ${month}  `;
 
             for (var title in menu[ year ][ month ]) {
+                let fix = menu[ year ][ month ][ title ].needServer ? '' : '/index.html';
+                // 需要独自启服务的，链接到他的目录就行，
+                // 不需要启服务的，链接到默认的index.html就行了
                 str += `
-+ [${title}](${menu[ year ][ month ][ title ].path + '/index.html'})，README查看：[README.md](${menu[ year ][ month ][ title ].path + '/README.md'})  `;
++ [${title}](${menu[ year ][ month ][ title ].path + fix})，帮助信息查看：[README.md](${menu[ year ][ month ][ title ].path + '/README.md'})  `;
             }
         });
     });
@@ -92,7 +103,7 @@ function createHTML(html) {
     let curPath = 'index.html',
         str = `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

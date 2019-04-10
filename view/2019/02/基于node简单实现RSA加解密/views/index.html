@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="content" />
+    <button id="start">加密并发送</button>
+</body>
+<script src="/javascripts/jsencrypt.js"></script>
+<script>
+document.getElementById('start').onclick = function() {
+    // 获取公钥
+    fetch('/publicKey').then(function(res){
+        return res.text();
+    }).then(function(publicKey) {
+        // 设置公钥并加密
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(publicKey);
+        var encrypted = encrypt.encrypt(document.getElementById('content').value);
+        // 发送私钥去解密
+        fetch('/decryption', {
+            method: 'POST',
+            body: JSON.stringify({value: encrypted})
+        }).then(function(data) {
+            return data.text();
+        }).then(function(value) {
+            console.log('解密后的结果：', value);
+        });
+    });
+};
+</script>
+</html>
