@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>history</title>
+</head>
+ 
+<body>
+    <button onclick="a()">a</button>
+    <button onclick="b()">b</button>
+    <button onclick="c()">b</button>
+    <p id="box">^!^</p>
+
+<script>
+    function a() {
+        history.pushState({
+            name: 'a'
+        }, 'a', location.href.split('?')[0] + '?name=a');
+        his.eventTrigger({name: 'a'});
+    }
+ 
+    function b() {
+        history.pushState({
+            name: 'b'
+        }, 'b', location.href.split('?')[0] + '?name=b');
+        his.eventTrigger({name: 'b'});
+    }
+ 
+    function c() {
+        history.pushState({
+            name: 'c'
+        }, 'c', location.href.split('?')[0] + '?name=c');
+        his.eventTrigger({name: 'c'});
+    }
+
+    var His = function() {
+        this.eventFn = {};
+
+        window.onpopstate = (e) => {
+            this.eventTrigger(e.state)
+        };
+    }
+    His.prototype.eventTrigger = function(state) {
+        var name = state.name,
+            env = this.eventFn[ name ];
+            
+        env.fn.apply(env.ctx);
+    };
+    His.prototype.bind = function(name, fn, ctx = window) {
+        this.eventFn[ name ] = {
+            fn,
+            ctx
+        }
+    };
+    var his = new His();
+    his.bind('a', function() {
+        console.log('a');
+    });
+    his.bind('b', function() {
+        console.log('b');
+    });
+    his.bind('c', function() {
+        console.log('c');
+    });
+
+</script>
+</body>
+</html>

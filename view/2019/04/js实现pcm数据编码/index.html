@@ -29,6 +29,7 @@ document.getElementById('start').addEventListener('click', function() {
     recorder = context.createScriptProcessor(4096, 1, 1);
 
     recorder.onaudioprocess = function(e) {
+        // getChannelData返回Float32Array类型的pcm数据
         var data = e.inputBuffer.getChannelData(0);
 
         inputData.push(new Float32Array(data));

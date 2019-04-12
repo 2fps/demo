@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hash</title>
+</head>
+<body>
+    <a href="#a">a</a>
+    <a href="#b">b</a>
+    <a href="#c">c</a>
+
+<script>
+var Hash = function() {
+    this.hashFn = {};
+
+    window.onhashchange = (e) => {
+        var newUrl = e.newURL,
+            newHash = newUrl.match(/#(\w*)$/),
+            env = this.hashFn[ newHash[1] ];
+        
+        env.fn.apply(env.ctx);
+    };
+}
+Hash.prototype.bind = function(hash, fn, ctx = window) {
+    this.hashFn[ hash ] = {
+        fn,
+        ctx
+    }
+}
+
+var router = new Hash();
+router.bind('a', function() {
+    console.log('aaa');
+});
+router.bind('b', function() {
+    console.log('bbb');
+});
+router.bind('c', function() {
+    console.log('ccc');
+});
+</script>
+</body>
+</html>

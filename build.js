@@ -36,6 +36,7 @@ function getNameAndPath(filePath, menu = {}, cir = 0) {
             getNameAndPath(filedir, menu[ filename ], cir);
         } else {
             // 一般内部有package.json的都需要独自启动服务器，所以，这种时候，不直接链接到他的index.html
+            // 本地你启动http-server时，会默认进入该文件夹下的index.html，但是在github上只会进入文件夹中
             let needServer = fs.existsSync(filePath + '/package.json');
 
             // 替换 window 下的斜杠
