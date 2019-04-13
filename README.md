@@ -21,8 +21,8 @@ npm run build
 
 ### 04  
 + [js实现pcm数据编码](view/2019/04/js实现pcm数据编码/index.html)，帮助信息查看：[README.md](view/2019/04/js实现pcm数据编码/README.md)  
-+ [web Audio实现pcm音频数据收集](view/2019/04/web Audio实现pcm音频数据收集/index.html)，帮助信息查看：[README.md](view/2019/04/web Audio实现pcm音频数据收集/README.md)  
 + [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
++ [webAudio实现pcm音频数据收集](view/2019/04/webAudio实现pcm音频数据收集/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio实现pcm音频数据收集/README.md)  
 + [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
 
 ### 03  
