@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://www.zhuyuntao.cn/wp-content/uploads/2018/11/csv.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>excel-csv</title>
+</head>
+<body>
+    <h2>
+        js导出excel文件，以csv格式。
+    </h2>
+    <button onclick="tableToCSV()">导出</button>
+<script>
+function tableToCSV(){
+    // 要导出的数据
+    var testData = [{
+            aa: '测试1',
+            bb: '123456789'
+        }];
+    //列标题，逗号隔开，每一个逗号就是隔开一个单元格
+    var str = `姓名,电话,邮箱\n`;
+    //增加\t为了不让表格显示科学计数法或者其他格式
+    for (var i = 0, len = testData.length; i < len; ++i) {
+        for (var item in testData[i]) {
+            str += `${testData[i][item] + '\t'},`;     
+        }
+        str += '\n';
+    }
+
+    var url = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(str);
+    // 下载模板
+    downloadCSV(url, 'csv.csv');
+}
+
+function downloadCSV(url, name) {
+    // 利用a标签的download属性进行下载
+    var link = document.createElement("a");
+
+    // 设置a标签的属性
+    link.href = url;
+    link.download = name || 'work.csv';
+    // 加入dom树中，模拟用户点击并下载
+    document.body.appendChild(link);
+    link.click();
+    // 移除该元素，防泄漏
+    document.body.removeChild(link);
+}
+</script>
+</body></html>

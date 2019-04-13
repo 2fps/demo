@@ -9,7 +9,7 @@
 ```
 http-server ./  
 ```
-为啥带 ./ ，我也不知道为啥根目录下启动http-server，他会默认到./public目录下，估带./当前目录。
+为啥带 ./ ，我也不知道为啥根目录下启动http-server，他会默认到./public目录下，故带./当前目录。
 访问对应端口即可查看demo。  
 
 ### 重新编译
@@ -41,3 +41,5 @@ npm run build
 
 ### 00  
 + [element-ui源码学习](view/2019/00/element-ui源码学习/index.html)，帮助信息查看：[README.md](view/2019/00/element-ui源码学习/README.md)  
++ [js导出excel-csv](view/2019/00/js导出excel-csv/index.html)，帮助信息查看：[README.md](view/2019/00/js导出excel-csv/README.md)  
++ [js导出excel-xml](view/2019/00/js导出excel-xml/index.html)，帮助信息查看：[README.md](view/2019/00/js导出excel-xml/README.md)  
