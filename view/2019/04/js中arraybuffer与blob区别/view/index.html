@@ -7,12 +7,18 @@
     <title>arraybuffer与blob</title>
 </head>
 <body>
+    <h3>
+        arraybuffer与blob的区别
+    </h3>
+    <div>
+        请先启动服务器，node app.js，访问 http://127.0.0.1:8080。
+    </div>
     <button id="arraybuffer">arraybuffer</button>
     <button id="blob">blob</button>
 </body>
 <script>
 // arraybuffer
-(function() {
+document.getElementById('arraybuffer').addEventListener('click', function() {
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function(e) {
@@ -25,9 +31,9 @@
     // 设置了种类
     xhr.responseType = 'arraybuffer';
     xhr.send();
-})();
+});
 // blob
-(function() {
+document.getElementById('blob').addEventListener('click', function() {
     var xhr = new XMLHttpRequest();
     
     xhr.onreadystatechange = function(e) {
@@ -40,6 +46,6 @@
     // 设置了种类
     xhr.responseType = 'blob';
     xhr.send();
-})();
+});
 </script>
 </html>
