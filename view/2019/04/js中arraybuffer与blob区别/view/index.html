@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arraybuffer与blob</title>
+</head>
+<body>
+    <button id="arraybuffer">arraybuffer</button>
+    <button id="blob">blob</button>
+</body>
+<script>
+// arraybuffer
+(function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function(e) {
+        if (this.readyState === 4 && this.status == 200) {
+            // 打印arraybuffer
+            console.log(this.response);
+        }
+    };
+    xhr.open('post', '/arraybuffer', true);
+    // 设置了种类
+    xhr.responseType = 'arraybuffer';
+    xhr.send();
+})();
+// blob
+(function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function(e) {
+        if (this.readyState === 4 && this.status == 200) {
+            // 打印blob
+            console.log(this.response);
+        }
+    };
+    xhr.open('post', '/blob', true);
+    // 设置了种类
+    xhr.responseType = 'blob';
+    xhr.send();
+})();
+</script>
+</html>
