@@ -26,6 +26,7 @@ npm run build
 + [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
 + [webAudio实现pcm音频数据收集](view/2019/04/webAudio实现pcm音频数据收集/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio实现pcm音频数据收集/README.md)  
 + [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
++ [webpack打包文件同时支持script引入和npm安装](view/2019/04/webpack打包文件同时支持script引入和npm安装)，帮助信息查看：[README.md](view/2019/04/webpack打包文件同时支持script引入和npm安装/README.md)  
 
 ### 03  
 + [await与forEach](view/2019/03/await与forEach/index.html)，帮助信息查看：[README.md](view/2019/03/await与forEach/README.md)  
