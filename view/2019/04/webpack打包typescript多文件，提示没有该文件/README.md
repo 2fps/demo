@@ -1,7 +1,7 @@
 ## webpack打包typescript多文件，提示没有该文件
 
 webpack打包typescript多文件，提示没有该文件
-详细说明的地址：[webpack打包typescript多文件，提示没有该文件]。
+详细说明的地址：[webpack打包typescript多文件，提示没有该文件](http://www.zhuyuntao.cn/2019/04/24/webpack打包typescript多文件，提示没有该文件/)。
 
 ## 服务启动
 ```
