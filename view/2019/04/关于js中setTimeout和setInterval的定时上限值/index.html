@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout和setInterval定时最大值</title>
+</head>
+<body>
+    
+</body>
+<script>
+var time = Math.pow(2, 31);
+
+setTimeout(() => console.log(4), 0);
+setTimeout(() => console.log(5));
+setTimeout(() => console.log(1), time);
+setTimeout(() => console.log(3), 0);
+console.log(2);
+</script>
+</html>
