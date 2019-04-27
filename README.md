@@ -23,11 +23,14 @@ npm run build
 + [js中arraybuffer与blob的区别](view/2019/04/js中arraybuffer与blob的区别/index.html)，帮助信息查看：[README.md](view/2019/04/js中arraybuffer与blob的区别/README.md)  
 + [js实现pcm数据编码](view/2019/04/js实现pcm数据编码/index.html)，帮助信息查看：[README.md](view/2019/04/js实现pcm数据编码/README.md)  
 + [js实现pcm音频转wav与播放](view/2019/04/js实现pcm音频转wav与播放/index.html)，帮助信息查看：[README.md](view/2019/04/js实现pcm音频转wav与播放/README.md)  
++ [typescript版node环境搭建](view/2019/04/typescript版node环境搭建)，帮助信息查看：[README.md](view/2019/04/typescript版node环境搭建/README.md)  
 + [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
 + [webAudio实现pcm音频数据收集](view/2019/04/webAudio实现pcm音频数据收集/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio实现pcm音频数据收集/README.md)  
 + [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
++ [webpack打包typescript多文件，提示没有该文件](view/2019/04/webpack打包typescript多文件，提示没有该文件)，帮助信息查看：[README.md](view/2019/04/webpack打包typescript多文件，提示没有该文件/README.md)  
 + [webpack打包文件同时支持script引入和npm安装](view/2019/04/webpack打包文件同时支持script引入和npm安装)，帮助信息查看：[README.md](view/2019/04/webpack打包文件同时支持script引入和npm安装/README.md)  
 + [webpack支持启动dev服务和热更新，并支持打包时增加文件注释](view/2019/04/webpack支持启动dev服务和热更新，并支持打包时增加文件注释)，帮助信息查看：[README.md](view/2019/04/webpack支持启动dev服务和热更新，并支持打包时增加文件注释/README.md)  
++ [关于js中setTimeout和setInterval的定时上限值](view/2019/04/关于js中setTimeout和setInterval的定时上限值/index.html)，帮助信息查看：[README.md](view/2019/04/关于js中setTimeout和setInterval的定时上限值/README.md)  
 
 ### 03  
 + [await与forEach](view/2019/03/await与forEach/index.html)，帮助信息查看：[README.md](view/2019/03/await与forEach/README.md)  
