@@ -7,10 +7,9 @@
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "watch": "ts-node bin/www",
-    "debugger": "nodemon  --watch routes/**/* -e  ts,tsx  --exec node --inspect -r ts-node/register bin/www",
-    "watch-server": "nodemon  --watch routes/**/* -e  ts,tsx  --exec ts-node bin/www"
+    "watch-server": "nodemon  --watch routes/**/* -e  ts,tsx  --exec ts-node bin/www",
+    "debugger": "nodemon  --watch routes/**/* -e  ts,tsx  --exec node --inspect -r ts-node/register bin/www"
   },
   "dependencies": {
     "@types/node": "^11.13.6",
