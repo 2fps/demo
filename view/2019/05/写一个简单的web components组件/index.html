@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span class="coloured">123</span>
+    <i-button type="round">
+        <span slot="button-name">this is a button</span>
+    </i-button>
+</body>
+<template>
+    <style>
+    </style>
+    <button id="name" class="round">
+        <slot name="button-name"></slot>
+    </button>
+</template>
+<script>
+class Button extends HTMLElement {
+    constructor() {
+        super();
+        const template = document.querySelector('template').content;
+        const shadowRoot = this.attachShadow({mode: 'closed'}).appendChild(template.cloneNode(true));
+
+        if (this.getAttribute('type') == 'round') {
+            
+        }
+    }
+    connectedCallback() {
+    }
+}
+
+window.customElements.define('i-button', Button);
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+(function() {
+    // Creates an object based in the HTML Element prototype
+    // 基于HTML Element prototype 创建obj
+    var element = Object.create(HTMLElement.prototype);
+    // 获取特mplate的内容
+    var template = document.currentScript.ownerDocument.querySelector('template').content;
+    // element创建完成之后的回调
+    element.createdCallback = function() {
+        // 创建 shadow root
+        var shadowRoot = this.createShadowRoot();
+        // 向root中加入模板
+        var clone = document.importNode(template, true);
+        shadowRoot.appendChild(clone);
+    };
+    document.registerElement('hellow-world', {
+        prototype: element
+    });
+}()); */
+</script>
+</html>
