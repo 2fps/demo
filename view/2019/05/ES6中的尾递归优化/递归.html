@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归</title>
+</head>
+<body>
+    
+</body>
+<script>
+function sum(x) {
+    if (x === 1) {
+        return 1;
+    }
+    return x + sum(--x);
+}
+
+console.log( sum(10) );
+console.log( sum(55555) );
+</script>
+</html>

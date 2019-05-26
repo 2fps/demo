@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>尾递归</title>
+</head>
+<body>
+
+</body>
+<script>
+'use strict';
+function sum1(x, total) {
+    'use strict';
+    if (x === 1) {
+        return x + total;
+    }
+    return sum1(x - 1, x + total);
+}
+
+console.log( sum1(10, 0) );     // 55
+console.log( sum1(55555, 0) );  // Uncaught RangeError: Maximum call stack size exceeded
+</script>
+</html>
