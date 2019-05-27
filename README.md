@@ -19,11 +19,17 @@ npm run build
 
 ## 2019  
 
+### 05  
++ [chrome下rem单位与12px问题](view/2019/05/chrome下rem单位与12px问题/index.html)，帮助信息查看：[README.md](view/2019/05/chrome下rem单位与12px问题/README.md)  
++ [ES6中的尾递归优化](view/2019/05/ES6中的尾递归优化/index.html)，帮助信息查看：[README.md](view/2019/05/ES6中的尾递归优化/README.md)  
++ [typeof未定义变量](view/2019/05/typeof未定义变量/index.html)，帮助信息查看：[README.md](view/2019/05/typeof未定义变量/README.md)  
++ [typescript版node环境搭建](view/2019/05/typescript版node环境搭建)，帮助信息查看：[README.md](view/2019/05/typescript版node环境搭建/README.md)  
++ [写一个简单的web components组件](view/2019/05/写一个简单的web components组件/index.html)，帮助信息查看：[README.md](view/2019/05/写一个简单的web components组件/README.md)  
+
 ### 04  
 + [js中arraybuffer与blob的区别](view/2019/04/js中arraybuffer与blob的区别/index.html)，帮助信息查看：[README.md](view/2019/04/js中arraybuffer与blob的区别/README.md)  
 + [js实现pcm数据编码](view/2019/04/js实现pcm数据编码/index.html)，帮助信息查看：[README.md](view/2019/04/js实现pcm数据编码/README.md)  
 + [js实现pcm音频转wav与播放](view/2019/04/js实现pcm音频转wav与播放/index.html)，帮助信息查看：[README.md](view/2019/04/js实现pcm音频转wav与播放/README.md)  
-+ [typescript版node环境搭建](view/2019/04/typescript版node环境搭建)，帮助信息查看：[README.md](view/2019/04/typescript版node环境搭建/README.md)  
 + [webAudio制造噪音并播放](view/2019/04/webAudio制造噪音并播放/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio制造噪音并播放/README.md)  
 + [webAudio实现pcm音频数据收集](view/2019/04/webAudio实现pcm音频数据收集/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio实现pcm音频数据收集/README.md)  
 + [webAudio播放本地音乐](view/2019/04/webAudio播放本地音乐/index.html)，帮助信息查看：[README.md](view/2019/04/webAudio播放本地音乐/README.md)  
