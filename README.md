@@ -24,7 +24,6 @@ npm run build
 + [ES6中的尾递归优化](view/2019/05/ES6中的尾递归优化/index.html)，帮助信息查看：[README.md](view/2019/05/ES6中的尾递归优化/README.md)  
 + [typeof未定义变量](view/2019/05/typeof未定义变量/index.html)，帮助信息查看：[README.md](view/2019/05/typeof未定义变量/README.md)  
 + [typescript版node环境搭建](view/2019/05/typescript版node环境搭建)，帮助信息查看：[README.md](view/2019/05/typescript版node环境搭建/README.md)  
-+ [写一个简单的web components组件](view/2019/05/写一个简单的web components组件/index.html)，帮助信息查看：[README.md](view/2019/05/写一个简单的web components组件/README.md)  
 
 ### 04  
 + [js中arraybuffer与blob的区别](view/2019/04/js中arraybuffer与blob的区别/index.html)，帮助信息查看：[README.md](view/2019/04/js中arraybuffer与blob的区别/README.md)  
