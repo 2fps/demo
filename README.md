@@ -19,6 +19,9 @@ npm run build
 
 ## 2019  
 
+### 06  
++ [background-size为100% 100%时背景图填充不完整](view/2019/06/background-size为100% 100%时背景图填充不完整/index.html)，帮助信息查看：[README.md](view/2019/06/background-size为100% 100%时背景图填充不完整/README.md)  
+
 ### 05  
 + [chrome下rem单位与12px问题](view/2019/05/chrome下rem单位与12px问题/index.html)，帮助信息查看：[README.md](view/2019/05/chrome下rem单位与12px问题/README.md)  
 + [ES6中的尾递归优化](view/2019/05/ES6中的尾递归优化/index.html)，帮助信息查看：[README.md](view/2019/05/ES6中的尾递归优化/README.md)  
