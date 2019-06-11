@@ -12,6 +12,10 @@ http-server ./
 为啥带 ./ ，我也不知道为啥根目录下启动http-server，他会默认到./public目录下，故带./当前目录。
 访问对应端口即可查看demo。  
 
+#### 独立server
+
+文件夹内含package.json的都需要借助npm安装依赖和启动服务，请到对应的文件夹下处理。
+
 ### 重新编译
 ```
 npm run build
@@ -20,7 +24,7 @@ npm run build
 ## 2019  
 
 ### 06  
-+ [background-size为100% 100%时背景图填充不完整](view/2019/06/background-size为100% 100%时背景图填充不完整/index.html)，帮助信息查看：[README.md](view/2019/06/background-size为100% 100%时背景图填充不完整/README.md)  
++ [background-size为100%-100%时背景图填充不完整](view/2019/06/background-size为100%-100%时背景图填充不完整/index.html)，帮助信息查看：[README.md](view/2019/06/background-size为100%-100%时背景图填充不完整/README.md)  
 
 ### 05  
 + [chrome下rem单位与12px问题](view/2019/05/chrome下rem单位与12px问题/index.html)，帮助信息查看：[README.md](view/2019/05/chrome下rem单位与12px问题/README.md)  
