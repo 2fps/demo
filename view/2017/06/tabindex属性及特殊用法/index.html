@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    是否还在为div不能绑定focus和blur事件而烦恼，那么来了解下tabindex属性吧。
+
+<!--more-->
+<h3>一、定义</h3>
+tabindex 属性规定元素的 tab 键控制次序（当 tab 键用于导航时）。
+<h3>二、用法</h3>
+语法：&lt;element tabindex="number"&gt;  默认值是0
+
+W3C的规定，tabindex属性的范围在0到 32767之间。
+
+tabindex中的值规定了我们按tab键时选中的顺序。顺序按照从1开始，从小到大，当存在相同值时，按照html文档中的顺序，当值是0时，他在所有设置了tabindex值的元素之后，当值是-1时，他将永远不会被tab键选中。例如：
+<pre> &lt;input type="text" value="a"&gt;
+ &lt;input type="text" tabindex="0" value="b"&gt;
+ &lt;input type="text" tabindex="3" value="c"&gt;
+ &lt;input type="text" tabindex="-1" value="d"&gt;
+ &lt;input type="text" value="e"&gt;
+ &lt;input type="text" tabindex="2" value="f"&gt;
+ &lt;input type="text" tabindex="2" value="g"&gt;
+ &lt;input type="text" tabindex="1" value="h"&gt;
+ &lt;input type="text" value="i"&gt;</pre>
+部分input给了tabindex值，点击tab键，我们可以得到顺序：h-&gt;f-&gt;g-&gt;c-&gt;a-&gt;b-&gt;e-&gt;i，而d无法被tab键选中。
+<h3>三、特殊用法</h3>
+<pre>&lt;div id="box"&gt;&lt;/div&gt;
+
+document.getElementById('box').onfocus = function() {
+    console.log('focus');
+};
+document.getElementById('box').onblur = function() {
+    console.log('blur');
+};</pre>
+无论我们怎么点击div或者使他失去焦点，控制台上都不会有任何打印，此时给div设置个tabindex属性为-1。
+<pre>&lt;div id="box" tabindex="-1"&gt;&lt;/div&gt;</pre>
+此时操作div，对应的focus和blur事件就可以触发了。
+
+<strong>注：tabindex赋值其他值也是可以的，不过其他值时，该div会被tab键选中，不友好。（tab键常用来选择输入的）</strong>
+
+当然，此时点击div时，会显示一个类似于边框的样式（其实是outline），这是用户默认的样式。
+
+<img class="alignnone size-full wp-image-385" src="http://www.zhuyuntao.cn/wp-content/uploads/2017/06/tabindex1.jpg" alt="" width="553" height="100" />
+
+我们可以设置个初始化的样式覆盖掉他。
+<pre>div:focus {
+    outline: none;
+}</pre>
+这样，div的聚焦和失焦的事件就可以正常使用了。
+</body>
+</html>

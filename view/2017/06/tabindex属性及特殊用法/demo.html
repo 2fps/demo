@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box,
+    .nonoe {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+    }
+    .nonoe:focus {
+        outline: none;
+    }
+    </style>
+</head>
+<body>
+    <p>第二个输入框无法被tab键选中</p>
+    <input type="text" />
+    <input type="text" tabindex="-1" />
+    <hr>
+    <p>注意tab键选中的顺序</p>
+    <input type="text" tabindex="3" value="第三个" />
+    <input type="text" tabindex="1" value="第一个" />
+    <input type="text" tabindex="2" value="第二个" />
+    <hr>
+    <p>div focus 和 blur 事件</p>
+    <div class="box" tabindex="-1"></div>
+    <hr>
+    <p>修改outline可以修改focus的默认样式</p>
+    <div class="nonoe" tabindex="-1"></div>
+
+</body>
+<script>
+document.getElementsByClassName('box')[0].onfocus = function() {
+    console.log('focus');
+}
+document.getElementsByClassName('box')[0].onblur = function() {
+    console.log('blur');
+}
+</script>
+</html>

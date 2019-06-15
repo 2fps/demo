@@ -1,6 +1,11 @@
 # demo  
 个人博客的demo，以及其他情况下使用到demo  
 
+## 目录
+
++ view，包含功能性的demo。
++ knowledge，搜集自己能想到的和看到的知识点。
+
 ## 使用方法
 
 ### 启动服务，查看demo
@@ -63,3 +68,13 @@ npm run build
 + [element-ui源码学习](view/2019/00/element-ui源码学习/index.html)，帮助信息查看：[README.md](view/2019/00/element-ui源码学习/README.md)  
 + [js导出excel-csv](view/2019/00/js导出excel-csv/index.html)，帮助信息查看：[README.md](view/2019/00/js导出excel-csv/README.md)  
 + [js导出excel-xml](view/2019/00/js导出excel-xml/index.html)，帮助信息查看：[README.md](view/2019/00/js导出excel-xml/README.md)  
+
+## 2018  
+
+### 12  
++ [innerText值多空格的问题](view/2018/12/innerText值多空格的问题/index.html)，帮助信息查看：[README.md](view/2018/12/innerText值多空格的问题/README.md)  
+
+## 2017  
+
+### 06  
++ [tabindex属性及特殊用法](view/2017/06/tabindex属性及特殊用法/index.html)，帮助信息查看：[README.md](view/2017/06/tabindex属性及特殊用法/README.md)  

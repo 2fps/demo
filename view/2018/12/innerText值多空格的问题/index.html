@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    在获取元素中的innerText值时，IE下表现的比其他浏览器多了个空格。
+
+    <!--more-->
+    <h2>一、现象</h2>
+    问题是这样的，我要获取一个td元素中的值（我使用的是innerText），如下，
+    <div>
+    <pre>&lt;td&gt;
+        123
+    &lt;/td&gt;</pre>
+    </div>
+    在IE下获取到的是‘123 ’，在最新的Edge下也是这个结果。
+    
+    同样的，其他标签元素这么写也是多出空格的，如：
+    <div>
+    <pre>&lt;span&gt;11 &lt;/span&gt;</pre>
+    <h2>二、解决方法</h2>
+    解决方法很多的了，比如，
+    <ul>
+            <li>不留空，换行。</li>
+    </ul>
+    像这样就行了，
+    <div>
+    <pre>&lt;span&gt;11&lt;/span&gt;</pre>
+    </div>
+    </div>
+    <ul>
+            <li>获取后，调用trim。</li>
+    </ul>
+    使用的时候，我们只要去下前后空格就行了。
+    
+    不过为何前部没有多出空格这就不清楚了。。。
+</body>
+</html>
