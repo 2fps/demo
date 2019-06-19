@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid olive;
+    }
+    .des {
+        width: 600px;
+        height: 200px;
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+<body>
+    <div class="box" draggable="true">drag</div>
+
+    <div class="des"></div>
+</body>
+<script>
+var oBox = document.getElementsByClassName('box')[0],
+    oDes = document.getElementsByClassName('des')[0];
+
+oBox.ondragstart = function(e) {
+    console.log('拖拽开始');
+};
+oBox.ondrag = function(e) {
+    console.log('拖拽中');
+};
+oBox.ondragend = function(e) {
+    console.log('拖拽结束');
+};
+oDes.ondragenter = function(e) {
+    console.log('拖拽进入');
+};
+oDes.ondragover = function(e) {
+    e.preventDefault();
+    console.log('拖拽悬浮于目标元素上');
+};
+oDes.ondragleave = function(e) {
+    console.log('拖拽离开');
+};
+oDes.ondrop = function(e) {
+    console.log('拖拽元素放置');
+};
+</script>
+</html>

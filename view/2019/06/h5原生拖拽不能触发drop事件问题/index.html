@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    一直使用拖拽组件去实现web上的拖拽问题，没有机会接触原生的拖拽事件。趁着空余时间了解了原生拖拽，实践中发现了，拖拽中的drop一直无法触发的问题。
+
+    <!--more-->
+    <h2>问题</h2>
+    用简单的demo来表示下，
+
+    <img class="alignnone size-full wp-image-1182" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/06/no-drop.png" alt="" width="1132" height="1410" />
+
+    当直接绑定事件的时候，并不能触发对应的drop事件。
+    <h2>解决方案</h2>
+    为了能触发drop事件，需要在dragover事件中阻止默认事件才可生效，紧接以上代码，设置preventDefault：
+
+    <img class="alignnone size-full wp-image-1181" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/06/dragover.png" alt="" width="1024" height="478" />
+
+    此时，查看控制台，就可以生效了。
+    <h2>其他</h2>
+    既然讲到了drag事件，也就顺带着写些对应的其他事件吧。
+    <h3>设置可拖拽</h3>
+    首先要增加元素draggable="true"的属性表示该元素可拖拽。
+    <h3>事件</h3>
+    还有一些其他的方法，按照绑定的元素分为被拖拽元素和目标元素(放置被拖拽元素的区域)。
+    <h4>被拖拽元素</h4>
+    <ul>
+        <li>
+    <div>
+    <div>dragstart，开始拖拽时触发。</div>
+    </div></li>
+        <li>
+    <div>
+    <div>drag，拖拽中连续触发。</div>
+    </div></li>
+        <li>
+    <div>
+    <div>dragend，拖拽结束触发。</div>
+    </div></li>
+    </ul>
+    <h4>目标元素</h4>
+    <div>
+    <ul>
+        <li>dragenter，被拖拽元素拖入目标元素内触发。</li>
+        <li>dragover，被拖拽元素在目标元素上方时连续触发。</li>
+        <li>
+    <div>
+    <div>dragleave，被拖拽元素离开目标元素内触发。</div>
+    </div>
+    <div></div></li>
+        <li>
+    <div>
+    <div>
+    <div>drop，被拖拽元素放置到目标元素上时触发。</div>
+    </div>
+    </div></li>
+    </ul>
+    </div>
+    <div><img class="alignnone size-full wp-image-1180" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/06/all-drag.png" alt="" width="1004" height="1336" /></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
