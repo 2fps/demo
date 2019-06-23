@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    由于需要在手机端web调试几个仅在https下生效的接口，无法使用localhost或127.0.0.1访问(本地访问无需开启)，故需要使用webpack-dev-server开启https。
+
+    <!--more-->
+    <h2>开启https</h2>
+    查看官方文档，webpack-dev-server已经支持了https方式，<a href="https://webpack.js.org/configuration/dev-server/#devserverhttps" target="_blank" rel="noopener">devserverhttps</a>。设置https为true即可。
+    
+    <img class="alignnone size-full wp-image-1185" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/06/devserver.png" alt="" width="854" height="440" />
+    
+    当然，访问时会出现不安全的提示，你可以无视他，毕竟这只是本地的调试环境。
+    
+    如果需要使用证书，官网上也提供了使用证书的方式，证书么，也可以通过openssl生成，这儿就不多说了。
+    <h2>访问限制</h2>
+    使用localhost或127.0.0.1访问时没有访问的异常，但是用pc的ip地址时，出现了 无法访问此网站 的提示。
+    
+    解决方式就是在cli命令后加入 --host 参数就行了，如果你需要直接启动对应的地址，再加上ip即可，如--host xxx.xxx.xxx.xxx。
+</body>
+</html>
