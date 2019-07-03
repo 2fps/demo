@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    起因是这样的，在群里见到同学发了张图，如下：
+
+    <img class="alignnone size-full wp-image-1193" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/微信图片_20190701221104.jpg" alt="" width="1080" height="1920" />
+    
+    于是便联想到了a==1&amp;&amp;a==2&amp;&amp;a==3这道题中的defineProperty方法，便来实现下（仅针对这道题目。。）。
+    <h2>we != we &amp;&amp; we == we</h2>
+    看到这道题，输出false肯定是很容易的，那他是否可以为true呢？
+    
+    we != we，1不就不等于0么，。we==we，1不就等于1么。那这样就好办了，在每次获取we的值对比时，我们可以利用defineProperty方法修改掉他的get方法，
+    
+    <img class="alignnone size-full wp-image-1194" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/we-define.png" alt="" width="874" height="664" />
+    
+    只要保证前两次的值不等（123!=456），后两次值相等（undefined==undefined）就行了。当然重写toString和valueOf也是可以的。
+    
+    所以，这题答案想要true或false都可以嘛。
+    
+    前面讲到了a==1&amp;&amp;a==2&amp;&amp;a==3这题，正好也来看一波。
+    <h2>a==1&amp;&amp;a==2&amp;&amp;a==3</h2>
+    <h3>toString或valueOf</h3>
+    在进行等号比较的时候，值会先调用他的valueOf方法，而当valueOf返回的不是基本类型的时候，就会去调用toString方法。
+    
+    <img class="alignnone size-full wp-image-1195" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/tostring-valueof.png" alt="" width="884" height="738" />
+    
+    所以我们可以对valueOf和toString重写，达到目的。
+    <h3>defineProperty</h3>
+    前面提到的defineProperty同样可以做到这一点。
+    
+    <img class="alignnone size-full wp-image-1196" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/define-property.png" alt="" width="1194" height="590" />
+    <h3>数组</h3>
+    数组调用toString方法时会隐含调用join方法，我们可以重写掉他的join方法，
+    
+    <img class="alignnone size-full wp-image-1197" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/array-join.png" alt="" width="1102" height="440" />
+    
+    有一次达到了目的。
+    <div>
+    <h3>symbol</h3>
+    原理与toString和valueOf差不多。
+    
+    <img class="alignnone size-full wp-image-1198" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/symbol.png" alt="" width="1142" height="402" />
+    <h2>总结</h2>
+    这些方式看似没有章法，很神奇，其实只要掌握了==时，js实际做了哪些事，这些方法就不成问题了。
+    
+    </div>
+</body>
+</html>

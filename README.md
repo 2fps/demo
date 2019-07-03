@@ -10,11 +10,10 @@
 
 ### 启动服务，查看demo
 
-根目录下启动  
+借助于http-server库，在根目录下启动  
 ```
 http-server ./  
 ```
-为啥带 ./ ，我也不知道为啥根目录下启动http-server，他会默认到./public目录下，故带./当前目录。
 访问对应端口即可查看demo。  
 
 #### 独立server
@@ -28,9 +27,13 @@ npm run build
 
 ## 2019  
 
+### 07  
++ [关于we!=we&&we==we问题联想](view/2019/07/关于we!=we&&we==we问题联想/index.html)，帮助信息查看：[README.md](view/2019/07/关于we!=we&&we==we问题联想/README.md)  
+
 ### 06  
 + [background-size为100%-100%时背景图填充不完整](view/2019/06/background-size为100%-100%时背景图填充不完整/index.html)，帮助信息查看：[README.md](view/2019/06/background-size为100%-100%时背景图填充不完整/README.md)  
 + [h5原生拖拽不能触发drop事件问题](view/2019/06/h5原生拖拽不能触发drop事件问题/index.html)，帮助信息查看：[README.md](view/2019/06/h5原生拖拽不能触发drop事件问题/README.md)  
++ [react中使用redux](view/2019/06/react中使用redux/index.html)，帮助信息查看：[README.md](view/2019/06/react中使用redux/README.md)  
 + [webpack-dev-server开启https访问](view/2019/06/webpack-dev-server开启https访问)，帮助信息查看：[README.md](view/2019/06/webpack-dev-server开启https访问/README.md)  
 
 ### 05  

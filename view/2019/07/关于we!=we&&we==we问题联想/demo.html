@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>查看控制台</p>
+</body>
+<script>
+// we != we && we == we
+var i = -1,
+    arr = [123, 456];
+
+Object.defineProperty(window, 'we', {
+    get: function() {
+        i++;
+        return arr[i];
+    }
+});
+
+if (we != we && we == we) {
+    console.log('we != we && we == we, true');
+} else {
+    console.log('we != we && we == we, false');
+}
+
+// a==1&&a==2&&a==3
+// 1.1 修改toString
+const a = {
+    i: 1,
+    toString: function () {
+        return a.i++;
+    }
+}
+
+console.log('toString', a == 1 && a == 2 && a == 3);
+
+// 1.2 修改valueOf
+const a = {
+    i: 1,
+    valueOf: function () {
+        return a.i++;
+    }
+}
+
+console.log('valueOf', a == 1 && a == 2 && a == 3);
+
+// 2.defineProperty
+var val = 0;
+Object.defineProperty(window, 'a', {
+    get: function() {
+        return ++val;
+    }
+});
+console.log('defineProperty', a == 1 && a == 2 && a == 3);
+
+// 3.数组
+var a = [1, 2, 3];
+a.join = a.shift;
+console.log('数组方式', a == 1 && a == 2 && a == 3);
+
+// 4.symbol
+let a = {[Symbol.toPrimitive]: ((i) => () => ++i) (0)};
+console.log('symbol', a == 1 && a == 2 && a == 3);
+</script>
+</html>
