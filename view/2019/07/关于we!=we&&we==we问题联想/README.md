@@ -6,4 +6,4 @@
 ### 说明
 
 demo.html中是demo。
-inde.html中是html版的博客内容。
+index.html中是html版的博客内容。
