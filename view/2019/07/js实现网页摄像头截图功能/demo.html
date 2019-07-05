@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+video {
+    width: 200px;
+    height: 120px;
+}
+</style>
+</head>
+<body>
+    <video></video>
+    <canvas style="display: none;" id="canvas" width="300" height="200"></canvas>
+    <button id="btn">截图</button>
+</body>
+<script>
+var oCanvas = document.getElementById('canvas');
+var ctx = oCanvas.getContext('2d');  
+var video = document.querySelector('video');
+
+var constraints = { audio: true, video: { width: 1280, height: 720 } }; 
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream) {
+    video.srcObject = mediaStream;
+
+    video.onloadedmetadata = function(e) {
+        video.play();
+    };
+    const track = mediaStream.getVideoTracks()[0];
+    imageCapture = new ImageCapture(track);
+
+    return imageCapture.getPhotoSettings();
+})
+.then(photoSettings => {
+    oCanvas.width = photoSettings.imageWidth;
+    oCanvas.height = photoSettings.imageHeight;
+})
+.catch(function(err) {
+    console.log(err.name + ": " + err.message);
+}); // always check for errors at the end.
+
+document.getElementById('btn').onclick = function() {
+    ctx.drawImage(video, 0, 0);
+    var base64Img = canvas.toDataURL();
+    var oA = document.createElement('a');
+    oA.href = base64Img;
+    oA.download = '截图.png'; // 下载的文件名可以此处修改
+    oA.click();
+};
+
+</script>
+</html>

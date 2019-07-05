@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    WebRTC的出现赋予了js操作录音设备和摄像头的能力，假如我们使用网页监控，考虑到实时传递摄像头的数据量比较大的问题，我们可以采用定时抓取摄像头抓拍的照片的方式，那么如何使用js获取摄像头拍摄照片（截取图片）的功能呢？
+
+    <!--more-->
+    <h2>视频流</h2>
+    主角仍是webRTC中的getUserMedia方法(demo使用的是推荐使用的navigator.mediaDevices.getUserMedia方法，navigator.getUserMedia也差不多)。首先，先获取到摄像头中的视频流。
+    <div>
+    <pre>&lt;video&gt;&lt;/video&gt;</pre>
+    </div>
+    <div>
+    <pre>var video = document.querySelector('video');
+    var constraints = {
+        audio: true,
+        video: {
+            width: 1280,
+            height: 720
+        }
+    };
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream) {
+        video.srcObject = mediaStream;
+        video.onloadedmetadata = function(e) {
+            video.play();  // 等摄像头数据加载完成后，开始播放
+        };
+    });</pre>
+    </div>
+    分辨率不设置的话也没事，会使用默认的分辨率，如果设置了超过了硬件的分辨率，则会使用默认的上限值。
+    <h2>canvas绘制</h2>
+    为了实现图片的下载，我们需要借助canvas。首先需要将当前的数据绘制到canvas上，再利用canvas的toDataURL方法将图片转换成base64格式的图片。
+    <h3>分辨率</h3>
+    我们都知道，视频分辨率的大小，影响着canvas的大小(或canvas的裁剪大小)。我这是让canvas铺满图片，全屏裁剪的。
+    
+    为了获取对应的分辨率，需要用到<a href="https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/ImageCapture" target="_blank" rel="noopener">ImageCapture</a>对象，传入的参数是一个MediaStreamTrack，而该类型需要调用MediaStream类型的<a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getVideoTracks" target="_blank" rel="noopener">getVideoTracks</a>()方法。
+    <div>
+    <pre>var track = mediaStream.getVideoTracks()[0],
+        imageCapture = new ImageCapture(track);
+    // 从流中获取拍摄到的静止图片的信息
+    imageCapture.getPhotoSettings();</pre>
+    </div>
+    根据分辨率，设置canvas大小：
+    <div>
+    <pre>oCanvas.width = photoSettings.imageWidth;
+    oCanvas.height = photoSettings.imageHeight;</pre>
+    </div>
+    <h3>绘制</h3>
+    绘制的话，直接使用2d上下文对象的<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage" target="_blank" rel="noopener">drawImage</a>方法就行了，该方法支持传入的是一个HTMLVideoElement元素的，直接调用就可以绘制成功了。
+    <div>
+    <pre>ctx.drawImage(video, 0, 0);</pre>
+    </div>
+    <h2>下载</h2>
+    接下来就是利用a标签下载base64格式的图片了，在我的这篇文章<a href="http://www.zhuyuntao.cn/2017/03/10/canvas%e4%bf%9d%e5%ad%98%e5%9b%be%e7%89%87%e5%88%b0%e6%9c%ac%e5%9c%b0/" target="_blank" rel="noopener">canvas保存图片到本地</a>中有详细的说明。
+    
+    给下载按钮绑定个事件，
+    <div>
+    <pre>document.getElementById('btn').onclick = function() {
+        ctx.drawImage(video, 0, 0);
+        var base64Img = canvas.toDataURL();
+        var oA = document.createElement('a');
+        oA.href = base64Img;
+        oA.download = '截图.png'; // 下载的文件名可以此处修改
+        oA.click();
+    };</pre>
+    </div>
+    因为只有要下载的时候才会去绘制canvas，所以将绘制过程移到了事件之中。
+</body>
+</html>
