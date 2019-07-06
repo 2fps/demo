@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+document.addEventListener('visibilitychange', function() {
+    console.log('document.visibilityState', document.visibilityState);
+    if ('hidden' === document.visibilityState) {
+        document.title = '你走了'
+    } else {
+        document.title = '你又回来啦';
+    }
+});
+// dom 0级事件会被覆盖，所以改用dom1的addEventListener
+document.addEventListener('visibilitychange', function() {
+    console.log('document.hidden', document.hidden);
+});
+</script>
+</html>

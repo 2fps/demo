@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    同学自己搞了个小博客系统，在浏览功能的时候，发现了好玩的东西：
+
+    <img class="alignnone size-full wp-image-1206" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/Video_2019-07-05_211159.gif" alt="" width="372" height="56" />
+    
+    当当前的菜单标签页(tab页)获取到焦点时，title显示正常的，当失焦时则显示等你回来哦。看到这个，顿时觉得有趣，于是便来琢磨一番。
+    
+    <!--more-->
+    
+    首先，该事件是visibilitychange事件，他可以用来判断页面的可见性。也就是说，当标签也聚焦或失焦时，会触发该事件。
+    <h2>用法</h2>
+    直接绑定到document上，
+    <div>
+    <pre>document.onvisibilitychange = function() {
+        console.log(document.visibilityState);
+    }</pre>
+    </div>
+    <div>
+    <h3>document.visibilityState</h3>
+    该属性是只读属性。
+    <ul>
+            <li>visible，浏览器的焦点在该页面上，并且没有最小化。</li>
+            <li>hidden，文档处于背景标签页(无浏览器焦点)或者窗口处于最小化状态。</li>
+            <li>prerender，页面渲染中，文档只能从此状态开始，永远不能从其他值变为此状态。</li>
+            <li>unloaded，页面卸载。</li>
+    </ul>
+    注：除了visible和hidden，其他两种情况，浏览器不一定支持，所以我们仅需关注前两种状态。
+    
+    </div>
+    <div>
+    <pre>document.onvisibilitychange = function() {
+        if ('hidden' === document.visibilityState) {
+            document.title = '你走了'
+        } else {
+            document.title = '你又回来啦';
+        }
+    }</pre>
+    </div>
+    配和document.title，这就实现啦。
+    <h3 class="postTitle">document.hidden</h3>
+    还有个属性也得介绍下，document.hidden只读属性，返回布尔值，表示该页面是否隐藏了。
+    <div>
+    <pre>document.addEventListener('visibilitychange', function() {
+        console.log(document.hidden);
+    });</pre>
+    </div>
+    为了防止事件覆盖，我是用了addEventListener方式绑定。实际测试和visibilityState中的visible、hidden效果一致的。
+    <h2>用处</h2>
+    <ul>
+            <li>非当前也背景音乐不需要播放。</li>
+            <li>非当前页轮播或其他动画不需要进行。</li>
+            <li>非当前页面一些请求或更新不需要触发。</li>
+            <li>等等</li>
+    </ul>
+    <h2>兼容性</h2>
+    <a href="https://caniuse.com/#search=visibilityState" target="_blank" rel="noopener">document.visibilityState</a>
+    
+    <img class="alignnone size-full wp-image-1208" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/2019-07-06_110649.png" alt="" width="1687" height="358" />
+    
+    document.hidden
+    
+    hidden的在caniuse上没有找到，不过在MDN上有。
+    
+    <img class="alignnone size-full wp-image-1209" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/2019-07-06_111027.png" alt="" width="1360" height="463" />
+    
+    加上浏览器私有前缀的话，两者的兼容性还是很不错的。
+</body>
+</html>

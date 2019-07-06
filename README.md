@@ -31,6 +31,7 @@ npm run build
 + [js实现网页摄像头截图功能](view/2019/07/js实现网页摄像头截图功能/index.html)，帮助信息查看：[README.md](view/2019/07/js实现网页摄像头截图功能/README.md)  
 + [关于package.json的scripts命令中使用单双引号的问题](view/2019/07/关于package.json的scripts命令中使用单双引号的问题/index.html)，帮助信息查看：[README.md](view/2019/07/关于package.json的scripts命令中使用单双引号的问题/README.md)  
 + [关于we!=we&&we==we问题联想](view/2019/07/关于we!=we&&we==we问题联想/index.html)，帮助信息查看：[README.md](view/2019/07/关于we!=we&&we==we问题联想/README.md)  
++ [浏览器标签页聚焦和失焦事件-visibilitychange](view/2019/07/浏览器标签页聚焦和失焦事件-visibilitychange/index.html)，帮助信息查看：[README.md](view/2019/07/浏览器标签页聚焦和失焦事件-visibilitychange/README.md)  
 
 ### 06  
 + [background-size为100%-100%时背景图填充不完整](view/2019/06/background-size为100%-100%时背景图填充不完整/index.html)，帮助信息查看：[README.md](view/2019/06/background-size为100%-100%时背景图填充不完整/README.md)  
