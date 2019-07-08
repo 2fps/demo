@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <video id="video" style="width: 100px;height: 80px;"></video>
+</body>
+<script>
+var start = document.getElementById('start'),
+    stop = document.getElementById('stop'),
+    video = document.getElementById('video'),
+    mediaRecorder = null;
+
+navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: true
+}).then(stream => {
+    video.srcObject = stream;
+  
+    video.onloadedmetadata = function(e) {
+        video.play();
+    };
+
+    mediaRecorder = new MediaRecorder(stream, {
+        audioBitsPerSecond: 128000,
+        videoBitsPerSecond: 100000,
+        mimeType: 'video/webm;codecs=h264'
+    });
+
+    mediaRecorder.ondataavailable = function (e) {
+        // 下载视频
+        var blob = new Blob([e.data], {'type': 'video/mp4'}),
+            a = document.createElement('a');
+
+        a.href = URL.createObjectURL(blob);
+        a.download = '录像.mp4';
+        a.click();
+    }
+
+}).catch(err => {
+    console.log(err);
+})
+
+// 收集
+start.onclick = function () {
+    console.log('start');
+    mediaRecorder.start();
+    // mediaRecorder.start(3000);
+}
+
+// 结束收集
+stop.onclick = function () {
+    console.log('stop');
+    mediaRecorder.stop();
+}
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    通过js截取摄像头图片的功能已经实现了，那么如果我要实时获取录像流或者录像的功能呢？
+
+    <!--more-->
+
+    此篇是基于MediaRecorder API去获取录音数据的，紧接着<a href="http://www.zhuyuntao.cn/2019/07/05/js实现网页摄像头截图功能/" target="_blank" rel="noopener">js实现网页摄像头截图功能</a>。
+    <h2><span>MediaRecorder</span></h2>
+    <h3>用法</h3>
+    <pre>var mediaRecorder = new MediaRecorder(stream [，options ]);</pre>
+    <h3>参数</h3>
+    <h4>stream</h4>
+    getUserMedia()回调参数或audio，video，canvas元素。
+    <h4>options</h4>
+    可选参数，包括以下几个字段，
+    <ul>
+        <li>mimeType，表示MediaRecorder的MIME类型。（MediaRecorder.isTypeSupported()可以检测浏览器是否支持该类型）</li>
+        <li>audioBitsPerSecond，媒体音频的比特率。</li>
+        <li>videoBitsPerSecond，媒体视频的比特率。</li>
+        <li>bitsPerSecond，媒体音频和视频的比特率，权重比前两个属性低，仅在未设置音频或视频时有用。</li>
+    </ul>
+    <h3>方法</h3>
+    <h4>MediaRecorder.start()</h4>
+    开始录制媒体，参数timeslice(单位毫秒)表示持续该时间段内捕获数据(触发dataavailable事件)。
+    <h4>MediaRecorder.stop()</h4>
+    停止录制，此时会触发dataavailable事件。
+    <h4>MediaRecorder.requestData()</h4>
+    保存到目前位为止（或自前一次requestData以来）的数据。
+    <h3>事件</h3>
+    <h4>MediaRecorder.ondataavailable</h4>
+    用于处理收集的媒体数据，触发条件：
+    <ul>
+        <li>调用stop()方法。</li>
+        <li>调用了requestData()方法。</li>
+        <li>start设置的timeslice后触发。</li>
+    </ul>
+    数据在回调参数的data中，我们可以将其转成blob，发送给后端或者直接前端下载。
+    <div>
+    <pre>mediaRecorder.ondataavailable = function (e) {
+        var blob = newBlob([e.data], {'type': 'video/mp4'}),
+            a = document.createElement('a');
+
+        a.href = URL.createObjectURL(blob);
+        a.download = '录像.mp4';
+        a.click();
+    }</pre>
+    </div>
+    目前的话，demo中仅用到这些个方法和事件，其他的可以查看<a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder" target="_blank" rel="noopener">MDN文档</a>。
+    <h2>录像下载</h2>
+    <h3>新建MediaRecorder</h3>
+    <div>
+    <pre>mediaRecorder = new MediaRecorder(stream, {
+        audioBitsPerSecond: 128000,
+        videoBitsPerSecond: 100000,
+        mimeType: 'video/webm;codecs=h264'
+    });</pre>
+    </div>
+    stream为getUserMedia返回的MediaStream对象。
+
+    我们通过按钮事件操作mediaRecorder对象。
+    <h3>事件绑定和方法调用</h3>
+    <div>
+    <pre>&lt;button id="start"&gt;start&lt;/button&gt;
+    &lt;button id="stop"&gt;stop&lt;/button&gt;</pre>
+    <div>
+    <pre>start.onclick = function () {
+        console.log('start');
+        mediaRecorder.start();
+    }
+    stop.onclick = function () {
+        console.log('stop');
+        mediaRecorder.stop();
+    }</pre>
+    </div>
+    </div>
+    start开始录像，stop结束录像，而录像的数据在dataavailable的回调之中，继续设置该回调事件：
+    <div>
+    <pre>mediaRecorder.ondataavailable = function (e) {
+        // 下载视频
+        var blob = new Blob([e.data], {'type':'video/mp4'}),
+            a = document.createElement('a');
+        
+        a.href = URL.createObjectURL(blob);
+        a.download = '录像.mp4';
+        a.click();
+    }</pre>
+    </div>
+    将data转成blob，再通过a标签下载了。
+    <h2>兼容性</h2>
+    <img class="alignnone size-full wp-image-1212" src="http://www.zhuyuntao.cn/wp-content/uploads/2019/07/mediaRecorder.png" alt="" width="1709" height="324" />
+
+    不过，Media Recorder的兼容性比较差，相比webRTC差了好些。
+
+</body>
+</html>
