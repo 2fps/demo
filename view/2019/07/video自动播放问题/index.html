@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    在使用<a href="http://www.zhuyuntao.cn/2019/07/08/基于media-recorder实现js获取摄像头录像数据/" target="_blank" rel="noopener">Media Recorder实现js调用摄像头录像</a>功能后，需要测试下录像的文件是否能正常播放，遇到了chrome下video不能自动播放的问题。
+
+    <!--more-->
+    <h2>问题</h2>
+    在使用autoplay属性后，video并不能自动播放。
+    <div>
+    <pre>&lt;video src="./1.mp4" autoplay&gt;&lt;/video&gt;</pre>
+    </div>
+    <h2>解决方案</h2>
+    <h3>静音播放</h3>
+    chrome下允许静音情况下，自动播放。muted属性就可以达到此效果。
+    
+    在原先的autoplay上增加muted属性，
+    <div>
+    <pre>&lt;video src="./1.mp4" autoplay muted&gt;&lt;/video&gt;</pre>
+    </div>
+    此时video就可以自动播放了，不过音量为0。
+    <h3>调用api播放</h3>
+    video提供了play播放方法，我们可以直接调用进行播放。
+    <div>
+    <pre>oVideo.play();</pre>
+    </div>
+    <h3>手动播放</h3>
+    使用control属性显示操作条，用户手动点击播放。
+    <div>
+    <pre>&lt;video src="./1.mp4" controls&gt;&lt;/video&gt;</pre>
+    </div>
+    &nbsp;
+</body>
+</html>

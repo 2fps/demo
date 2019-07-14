@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    video {
+        width: 200px;
+        height: 150px;
+    }
+    </style>
+</head>
+<body>
+    <p>autoplay</p>
+    <video src="./1.mp4" autoplay></video>
+    <p>autoplay + muted</p>
+    <video src="./1.mp4" autoplay muted></video>
+    <p>API</p>
+    <video src="./1.mp4" id="video"></video>
+    <button id="play">播放</button>
+    <p>controls</p>
+    <video src="./1.mp4" controls></video>
+</body>
+<script>
+document.getElementById('play').onclick = function() {
+    var oVideo = document.getElementById('video');
+
+    oVideo.play();
+};
+</script>
+</html>

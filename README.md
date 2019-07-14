@@ -29,6 +29,7 @@ npm run build
 
 ### 07  
 + [js实现网页摄像头截图功能](view/2019/07/js实现网页摄像头截图功能/index.html)，帮助信息查看：[README.md](view/2019/07/js实现网页摄像头截图功能/README.md)  
++ [video自动播放问题](view/2019/07/video自动播放问题/index.html)，帮助信息查看：[README.md](view/2019/07/video自动播放问题/README.md)  
 + [关于package.json的scripts命令中使用单双引号的问题](view/2019/07/关于package.json的scripts命令中使用单双引号的问题/index.html)，帮助信息查看：[README.md](view/2019/07/关于package.json的scripts命令中使用单双引号的问题/README.md)  
 + [关于we!=we&&we==we问题联想](view/2019/07/关于we!=we&&we==we问题联想/index.html)，帮助信息查看：[README.md](view/2019/07/关于we!=we&&we==we问题联想/README.md)  
 + [基于MediaRecorder实现js获取摄像头录像数据](view/2019/07/基于MediaRecorder实现js获取摄像头录像数据/index.html)，帮助信息查看：[README.md](view/2019/07/基于MediaRecorder实现js获取摄像头录像数据/README.md)  
