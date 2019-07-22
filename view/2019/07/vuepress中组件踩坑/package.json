@@ -1,0 +1,16 @@
+{
+  "name": "vuepressss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs --no-cache",
+    "docs:build": "vuepress build docs --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^1.0.2"
+  }
+}
