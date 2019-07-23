@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    一直想找个可以简单写写文档，知识点内容的静态博客，对比gitbook和vuepressh后，觉得gitbook太偏向文档，vuepress的灵活性更大，所以选择了vuepress(还可以直接使用vue component)。
+
+    <!--more-->
+
+    在使用较为强大的vue组件功能的时候，遇到了一些小坑。
+    <h2>组件使用</h2>
+    组件均位于docs/.vuepress/components下，启动服务后，vuepress会默认将这些组件进行注册。
+
+    假如现在有一个test组件，我们需要在md文件中引用他，可以使用&lt;test /&gt;标签的方式引用，
+
+    需要注意的是标签前的<strong>空格不能大于等于4个</strong>，否则标签会失效(包在clientonly标签中也算)。
+    <h2>config.js中配置README文件</h2>
+    config.js是vuepress的整体配置界面，当配置侧边栏时，我们需要写下对应的文件的路径，当展示的md文件中有README文件时，不能将README文件名写出（留空就行），否则会报错：
+    <pre>[vuepress] No matching page found for sidebar item "/README.md"
+    Rendering page: /demo1/[vuepress] No matching page found for sidebar item "/demo1/README.md"</pre>
+    比如：docs文件夹下有一个README和demo1文件夹，demo1文件夹下有个README.md。sidebar中配置要写出如下：
+    <div>
+    <pre>sidebar: {
+        "/": [
+            ""   // not "README.md"
+        ],
+        "/demo1/": [
+            ["/demo1/", "demo1"],     // not ["/demo1/README.md", "demo1"]
+        ],
+    }</pre>
+    </div>
+    <h2>组件打包error</h2>
+    在md文件中加入组件的使用后，例如，
+    <div>
+    <pre>&lt;test /&gt;</pre>
+    </div>
+    表现为以下两种情况：
+
+    1.build会出现报错，render function or template not defined in component: 某某组件名称。
+
+    2.dev或build后的文件启服务后，正常点击访问可以，但是F5刷新就会出现404。
+    <h3>处理方法</h3>
+    在组件引用外层增加clientOnly标签即可。
+    <div>
+    <pre>&lt;ClientOnly&gt;
+    &lt;test /&gt;
+    &lt;/ClientOnly&gt;</pre>
+    注：需要时请配合ctrl+F5清缓存使用（每次启服务，不知道那来那么多缓存的）。
+
+    </div>
+</body>
+</html>

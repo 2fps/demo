@@ -1,13 +1,8 @@
 
 module.exports = {
-    title: 'Hello World',
+    title: '11',
     description: '2222',
-    markdown: {
-        lineNumbers: true,
-        toc: { includeLevel: [1, 2] },
-    },
     themeConfig: {
-        lastUpdated: 'Last Updated',
         nav: [{
             text: 'Home',
             link: '/'
@@ -17,7 +12,8 @@ module.exports = {
         }],
         sidebar: {
             "/demo1/": [
-                ["/demo1/README.md", "demo1"]
+                ["/demo1/", "demo1"],   // not ["/demo1/README.md", "demo1"]
+                ["/demo1/加法/加法.md", "加法.md"],
             ],
         }
     }
