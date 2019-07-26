@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    字体有成千上万中，但在一张网页中，我们往往只会取选择一种或几种字体。有时为了能够显示开发者想要的类似字体，常会用到字体族。
+
+    <!--more-->
+    <h2>字体来源</h2>
+    网页中显示的字体来自哪呢？主要有以下两个来源。
+    <h3>操作系统的字体库</h3>
+    以window为例，在C盘中Windows/Fonts文件夹下，存放着系统中的字体。网页中若设置了对应的字体，则会用对应的字体库显示。
+    <h3>font-face</h3>
+    css3中允许开发者加载自己的字体库。
+    <h2>font-family</h2>
+    font-family用于给网页设置字体，他允许多个字体名称，不支持第一个字体就尝试下一个的方式。然后一般在font-family的后面常常见到以下几个字体，serif、sans-serif等，这几个就是这节的主题，字体族。
+    <h3>serif</h3>
+    serif，衬线体，意为有衬线的字体，衬线的意思是在字符笔画末端有叫做衬线的小细节的额外装饰。
+
+    常用字体属于衬线体有：
+    <ul>
+        <li>宋体、仿宋</li>
+        <li>Times New Roman</li>
+    </ul>
+    <h3>sans-serif</h3>
+    sans-serif，无衬线体，与衬线字体相反，该类字体通常是机械的和统一线条的，具有笔画清晰的末端，没有向外展开的，或者其它装饰。
+
+    常用字体属于无衬线体有：
+    <ul>
+        <li>黑体、楷体</li>
+        <li>Helvetica</li>
+    </ul>
+    <h3>cursive</h3>
+    cursive，草体，手写体。
+
+    常用字体属于草体的有：
+    <ul>
+        <li>华文行草</li>
+    </ul>
+    <h3>fantasy</h3>
+    fantasy，梦幻体，主要用于艺术字。
+    <h3>monospace</h3>
+    monospace，等宽字体，字母字体宽度相同的字体，码农写代码常用的字体，看着贼舒服。
+
+    个人比较喜欢用的是Monaco字体。
+    <h2>demo</h2>
+    来看下淘宝页面的font-family设置，
+    <pre>12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif</pre>
+    忽略前面的字体大小和line-height。
+
+    第一个字体是tahoma，在Fonts文件夹下也能搜到。
+
+    \5b8b\4f53是宋体的unicode 编码，最后，则以sans-serif字体族结束，兼容低版本浏览器。
+    <h2>总结</h2>
+    <h3>中文字体名</h3>
+    刚也看到了，为了防止字符编码解析成乱码的问题，需要用unicode 编码表示。
+    <h3>字体顺序</h3>
+    字体设置要兼顾中英文，由于大部分中文字体也是带有英文部分的，但是英文部分又不怎么好看，同时英文字体中大多不包含中文，所以最优先设置英文字体，其后是中文字体。
+
+    最后为了保证整体字体的兼容性，需要设置如serif 和sans-serif这些字体族。
+    <h3>字体名引号</h3>
+    当字体名字中间有空格，中文或 Unicode 字符编码表示的中文字体时，为了保证兼容性，带上引号。
+</body>
+</html>
