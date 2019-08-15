@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    一直没发现setTimeout居然可以传三个以上的参数，原谅我菜了。。。特地上MDN看了下用法。
+    <!--more-->
+    <h2>用法</h2>
+    setTimeout，用于延迟触发函数。
+    <div>
+    <pre>setTimeout(fn, delay);</pre>
+    </div>
+    fn表示触发函数，delay表示延迟多少毫秒。
+
+    等等，其他就不说了。。。
+    <h2>传参方式</h2>
+    从setTimeout第三个开始的参数会传递给function当作其参数。
+    <div>
+    <pre>setTimeout(function() {
+        console.log(arguments); // Arguments(3) ["a", "b", "c", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    }, 0, 'a', 'b', 'c');</pre>
+    </div>
+    参数顺利传入。
+
+    注：IE10及以上支持。
+    <h3>其他用法</h3>
+    还记得这道题么，
+    <div>
+    <pre>for (var i = 0; i &lt; 5; ++i) {
+        setTimeout(function() {
+            console.log(i);
+        });
+    }</pre>
+    </div>
+    由于闭包照成了最后结果5个5，此时就可以使用setTimeout传参的方式来解决了：
+    <div>
+    <pre>for (var i = 0; i &lt; 5; ++i) {
+        setTimeout(function(i) {
+            console.log(i);
+        }, 0, i);
+    }</pre>
+    </div>
+    其他处理方式：1. let。2. IIEF。
+</body>
+</html>
