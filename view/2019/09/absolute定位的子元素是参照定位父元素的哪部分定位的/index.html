@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    我们都知道absolute的子元素是按照非static的父元素定位的，那具体的左上角的位置是从那边开始的呢？margin?border?padding?content? 让我们来看下吧。
+
+    <!--more-->
+    <h2>absolute定位</h2>
+    最常见的情况莫过于这种了，
+    <div>
+    <pre>.parent {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        border: 1px solid #ccc;
+    }
+    .son {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        background-color: olive;
+    }</pre>
+    </div>
+    <div>
+    <pre>&lt;div class="parent"&gt;
+        &lt;div class="son"&gt;&lt;/div&gt;
+    &lt;/div&gt;</pre>
+    </div>
+    浏览器效果如下：
+    
+    <img class="alignnone size-medium" src="http://image.zhuyuntao.cn/image/2019/09/2019-09-14_135823.png" width="168" height="160" />
+    
+    可能我们一般都是这么理解的，那如果父子div都有边距或边框呢？
+    <h2>参照点</h2>
+    <h3>不设置子元素的left或top值</h3>
+    接下来，我们来找下左上角的参照点。
+    
+    先都给父子元素增加上10px的margin、border、padding。
+    <div>
+    <pre>.parent {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        border: 10px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+    .son {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        background-color: olive;
+        border: 10px solid blue;
+        margin: 10px;
+        padding: 10px;
+    }</pre>
+    </div>
+    html结构不变，首先看下父级的效果，
+    
+    <img class="alignnone size-medium" src="http://image.zhuyuntao.cn/image/2019/09/2019-09-15_175211.png" width="683" height="406" />
+    
+    我们选中了父级的content内容，发现子元素与父级的content有距离，再看下子元素的情况：
+    
+    <img class="alignnone size-medium" src="http://image.zhuyuntao.cn/image/2019/09/2019-09-15_175547.png" width="673" height="410" />
+    
+    发现这部分是子元素的margin内容。
+    <h3>设置子元素的left或top值</h3>
+    假如我们给子元素中增加了left或者top值，
+    
+    仅给son增加样式
+    <pre>.son {
+        /** ... */</pre>
+    <div>    left: 0px;</div>
+    <div>    top: 0px;</div>
+    <pre>    /** ... */
+    }</pre>
+    实际参考位置发生了变化，
+    
+    <img class="alignnone size-medium" src="http://image.zhuyuntao.cn/image/2019/09/2019-09-15_180344.png" width="682" height="408" />
+    
+    此时是按照父级的padding内容定位的。
+    <h2>总结</h2>
+    绝对定位时，子元素的左上角从margin开始。
+    
+    而参考定位的父元素的左上角为：
+    <ul>
+         <li>当子元素不设置top、left、right或bottom这种值时，以父元素的content开始。</li>
+         <li>当设置top、left、right或bottom这种值时，以父元素的padding开始。</li>
+    </ul>
+</body>
+</html>
