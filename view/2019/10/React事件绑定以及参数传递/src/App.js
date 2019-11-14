@@ -18,6 +18,10 @@ class App extends React.Component {
   }
   event4 = (e) => {
     console.log('event4', e);
+    setTimeout(() => {
+      // 丢了
+      console.log(e.target)
+    })
   }
 
   render() {
