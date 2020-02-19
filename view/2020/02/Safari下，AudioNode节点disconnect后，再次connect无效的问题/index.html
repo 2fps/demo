@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">开始</button>
+    <button id="pause">暂停</button>
+    <button id="resume">恢复</button>
+    <button id="stop">结束</button>
+</body>
+<script>
+let context = null;
+let createScript = null;
+let recorder = null;
+let audioInput = null;
+let stream = null;
+
+// let isPause = false;
+
+document.getElementById('start').addEventListener('click', start)
+document.getElementById('pause').addEventListener('click', pause)
+document.getElementById('resume').addEventListener('click', resume)
+document.getElementById('stop').addEventListener('click', stop)
+
+function start() {
+    context = new (window.AudioContext || window.webkitAudioContext)();
+    createScript = context.createScriptProcessor || context.createJavaScriptNode;
+    recorder = createScript.apply(context, [4096, 1, 1]);
+
+    navigator.mediaDevices.getUserMedia({
+        audio: true
+    }).then(stream => {
+        audioInput = context.createMediaStreamSource(stream);
+        stream = stream;
+    }).then(() => {
+        audioInput.connect(recorder);
+        recorder.connect(context.destination);
+    });
+    
+    recorder.onaudioprocess = e => {
+        // if (isPause) {
+        //     return;
+        // }
+        let lData = e.inputBuffer.getChannelData(0);
+        console.log('回调获取数据', lData);
+    }
+}
+
+function pause() {
+    audioInput.disconnect();
+    recorder.disconnect();
+    // isPause = true;
+}
+
+function resume() {
+    audioInput.connect(recorder);
+    recorder.connect(context.destination);
+    // isPause = false;
+}
+
+function stop() {
+    context.close();
+    if (stream && stream.getTracks) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+    }
+}
+</script>
+</html>
